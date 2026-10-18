@@ -65,7 +65,6 @@ npm run test:report   # open the HTML report of the last run
 | `npm run test:headed` | Same, with a visible browser |
 | `npm run test:ui` | Open Playwright UI Mode |
 | `npm run test:report` | Open the last HTML report |
-| `npm run codegen` | Record a test by clicking through the app |
 
 ## The app
 

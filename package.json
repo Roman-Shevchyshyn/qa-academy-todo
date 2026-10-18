@@ -10,8 +10,7 @@
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
-    "test:report": "playwright show-report",
-    "codegen": "playwright codegen http://localhost:5173"
+    "test:report": "playwright show-report"
   },
   "dependencies": {
     "react": "^18.3.1",
