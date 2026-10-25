@@ -89,7 +89,7 @@ src/
   pages/LoginPage.tsx   sign-in page
   components/           Header, Filters, TodoItem, RequireAuth (route guard)
 tests/
-  01-login.spec.ts      valid login opens the task list, invalid login shows an error
+  01-login.spec.ts      valid login opens the task page, invalid login shows an error and keeps the form
   02-todos.spec.ts      logs in before each test, then: add, complete, edit, delete, clear completed
 playwright.config.ts
 ```

@@ -24,7 +24,7 @@ test('user can complete a task', async ({ page }) => {
 
   await page.getByRole('checkbox', { name: 'Mark "Write tests" as completed' }).check();
 
-  await expect(page.getByTestId('todo-item')).toHaveClass(/completed/);
+  await expect(page.getByRole('checkbox', { name: 'Mark "Write tests" as completed' })).toBeChecked();
   await expect(page.getByTestId('items-left')).toHaveText('0 items left');
 });
 
@@ -37,6 +37,7 @@ test('user can edit a task', async ({ page }) => {
   await page.getByRole('button', { name: 'Save' }).click();
 
   await expect(page.getByTestId('todo-item')).toContainText('Final title');
+  await expect(page.getByTestId('todo-item')).not.toContainText('Draft title');
   await expect(page.getByLabel('Edit task')).toHaveCount(0);
 });
 
@@ -49,7 +50,7 @@ test('user can delete a task', async ({ page }) => {
   await expect(page.getByTestId('todo-item')).toHaveCount(0);
 });
 
-test('clear completed removes finished tasks', async ({ page }) => {
+test('clear completed removes a completed task', async ({ page }) => {
   await page.getByLabel('New task').fill('Old task');
   await page.getByRole('button', { name: 'Add' }).click();
   await page.getByRole('checkbox', { name: 'Mark "Old task" as completed' }).check();

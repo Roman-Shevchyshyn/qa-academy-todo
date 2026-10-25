@@ -4,7 +4,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto('/login');
 });
 
-test('valid credentials open the task list', async ({ page }) => {
+test('valid credentials open the task page', async ({ page }) => {
   await page.getByLabel('Username').fill('student');
   await page.getByLabel('Password').fill('qa2026');
   await page.getByRole('button', { name: 'Sign in' }).click();
@@ -14,7 +14,7 @@ test('valid credentials open the task list', async ({ page }) => {
   await expect(page.getByTestId('greeting')).toHaveText('Hi, student');
 });
 
-test('invalid credentials show an error', async ({ page }) => {
+test('invalid credentials show an error and keep the form', async ({ page }) => {
   await page.getByLabel('Username').fill('student');
   await page.getByLabel('Password').fill('wrong-password');
   await page.getByRole('button', { name: 'Sign in' }).click();
