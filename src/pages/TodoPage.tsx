@@ -94,10 +94,6 @@ export function TodoPage() {
     setError(null);
     const trimmed = newTitle.trim();
     await withSaving(SAVE_DELAY_MS, () => {
-      // TODO: to demo a failing test, change `t.id === id` to `t.id !== id`.
-      // The edited task keeps its old title and every other task gets the new one.
-      // tests/02-todos.spec.ts › "user can edit a task" fails on toContainText('Final title')
-      // with a clear diff: expected substring "Final title", received "Draft titleEdit✕".
       setTodos((current) => current.map((t) => (t.id === id ? { ...t, title: trimmed } : t)));
     });
     return true;
@@ -163,6 +159,10 @@ export function TodoPage() {
         {todos.length === 0 && <p className="empty">Nothing here yet. Add your first task!</p>}
 
         <footer className="footer">
+          {/* TODO: to demo a failing test, change 'item' to 'items' below.
+              The counter then shows "1 items left" for a single task.
+              tests/02-todos.spec.ts › "user can add a task" fails on toHaveText('1 item left')
+              with a clear diff: expected "1 item left", received "1 items left". */}
           <span className="footer-left" data-testid="items-left">
             {left} {left === 1 ? 'item' : 'items'} left
           </span>
