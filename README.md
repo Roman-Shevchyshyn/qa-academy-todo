@@ -4,14 +4,14 @@ A small React + TypeScript todo app with Playwright end-to-end tests in the same
 
 ## Prerequisites
 
-1. **Node.js 18 or newer** (20 LTS recommended). Download it from https://nodejs.org or install via `nvm`. `npm` comes with it.
+1. **Node.js 20 or newer** (22 LTS recommended). Download it from https://nodejs.org or install via `nvm`. `npm` comes with it.
 2. **Git**, to clone the repository.
 3. A terminal: Terminal / iTerm on macOS, PowerShell or Git Bash on Windows.
 
 Check that everything is in place:
 
 ```bash
-node -v    # v18.x or higher
+node -v    # v20.x or higher
 npm -v     # 9.x or higher
 git --version
 ```
@@ -24,11 +24,14 @@ git clone https://github.com/Roman-Shevchyshyn/qa-academy-todo.git
 cd qa-academy-todo
 
 # 2. Install project dependencies (React, Vite, Playwright, ...)
-npm install
+#    npm ci installs the exact versions from package-lock.json
+npm ci
 
 # 3. Download the browser Playwright will use for tests (one-time, ~100 MB)
 npx playwright install chromium
 ```
+
+On Linux, use `npx playwright install --with-deps chromium` to also install the system libraries the browser needs.
 
 ## Run the app
 
@@ -38,6 +41,8 @@ npm run dev
 
 Open http://localhost:5173 in your browser. You will land on the login page; sign in with `student` / `qa2026`.
 Stop the server with `Ctrl + C`.
+
+Port 5173 must be free: if another program is using it, `npm run dev` stops with an error instead of switching to a different port.
 
 ## Run the tests
 
@@ -52,6 +57,7 @@ Other useful ways to run them:
 ```bash
 npm run test:headed   # watch the browser while tests run
 npm run test:ui       # Playwright UI Mode: step through tests, inspect locators
+npm run test:debug    # Playwright Inspector: pause and step through each action
 npm run test:report   # open the HTML report of the last run
 ```
 
@@ -64,6 +70,7 @@ npm run test:report   # open the HTML report of the last run
 | `npm test` | Run all Playwright tests headless |
 | `npm run test:headed` | Same, with a visible browser |
 | `npm run test:ui` | Open Playwright UI Mode |
+| `npm run test:debug` | Run tests in Playwright Inspector |
 | `npm run test:report` | Open the last HTML report |
 
 ## The app
