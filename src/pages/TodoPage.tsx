@@ -159,10 +159,6 @@ export function TodoPage() {
         {todos.length === 0 && <p className="empty">Nothing here yet. Add your first task!</p>}
 
         <footer className="footer">
-          {/* TODO: to demo a failing test, change 'item' to 'items' below.
-              The counter then shows "1 items left" for a single task.
-              tests/02-todos.spec.ts › "user can add a task" fails on toHaveText('1 item left')
-              with a clear diff: expected "1 item left", received "1 items left". */}
           <span className="footer-left" data-testid="items-left">
             {left} {left === 1 ? 'item' : 'items'} left
           </span>
